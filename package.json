@@ -1,0 +1,23 @@
+{
+  "name": "aquest",
+  "version": "0.0.1",
+  "description": "A Serverless Project and its Serverless Plugin dependencies.",
+  "author": "me",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "cross-env DEBUG=true sls serve start -P 3000"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "cross-env": "^1.0.7",
+    "serverless-optimizer-plugin": "^1.1.0",
+    "serverless-serve": "^1.4.0"
+  }
+}
