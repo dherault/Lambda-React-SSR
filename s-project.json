@@ -2,8 +2,8 @@
   "name": "aquest",
   "version": "0.0.1",
   "profile": "serverless-v0.4.2",
-  "location": "https://github.com/...",
-  "author": "",
+  "location": "https://github.com/dherault/Aquest.git",
+  "author": "David Hérault",
   "description": "A Slick New Serverless Project",
   "custom": {},
   "plugins": ["serverless-optimizer-plugin", "serverless-serve"]

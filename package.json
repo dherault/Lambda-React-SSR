@@ -11,12 +11,19 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "serve": "cross-env DEBUG=true sls serve start -P 3000"
+    "serve": "cross-env DEBUG=true sls serve start -P 3000",
+    "db:listTables": "babel-node dynamodb/listTables.js",
+    "db:createTables": "babel-node dynamodb/createTables.js",
+    "db:deleteTables": "babel-node dynamodb/deleteTables.js"
   },
   "dependencies": {},
   "devDependencies": {
+    "aws-sdk": "^2.2.35",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
     "babelify": "^7.2.0",
     "cross-env": "^1.0.7",
+    "dotenv": "^2.0.0",
     "serverless-optimizer-plugin": "^1.1.0",
     "serverless-serve": "^1.4.0"
   }
