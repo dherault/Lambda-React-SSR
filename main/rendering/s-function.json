@@ -11,19 +11,13 @@
   },
   "endpoints": [
     {
-      "path": "/x",
+      "path": "/",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
       "apiKeyRequired": false,
-      "requestParameters": {
-      },
-      "requestTemplates": {
-        "application/json": {
-          "resourcePath": "$context.resourcePath",
-          "queryString": "#foreach($key in $input.params().querystring.keySet())#if($foreach.index > 0)&#end$util.urlEncode($key)=$util.urlEncode($input.params().querystring.get($key))#end"
-        }
-      },
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
         "400": {
           "statusCode": "400"
@@ -31,8 +25,120 @@
         "default": {
           "statusCode": "200",
           "responseParameters": {},
-          "responseModels": {"text/html": "Empty"},
-          "responseTemplates": {"text/html": "#set($inputRoot = $input.path('$'))$inputRoot"}
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    },
+    {
+      "path": "/{pathKey1}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    },
+    {
+      "path": "/{pathKey1}/{pathKey2}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    },
+    {
+      "path": "/{pathKey1}/{pathKey2}/{pathKey3}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    },
+    {
+      "path": "/{pathKey1}/{pathKey2}/{pathKey3}/{pathKey4}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    },
+    {
+      "path": "/{pathKey1}/{pathKey2}/{pathKey3}/{pathKey4}/{pathKey5}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": "$${renderingRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
         }
       }
     }

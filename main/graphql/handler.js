@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 /**
  * Serverless Module: Lambda Handler
@@ -8,15 +8,13 @@
  */
 
 // Require Serverless ENV vars
-var ServerlessHelpers = require('serverless-helpers-js').loadEnv();
+// var ServerlessHelpers = require('serverless-helpers-js').loadEnv();
 
 // Require Logic
-var lib = require('../lib');
+// var lib = require('../lib');
 
 // Lambda Handler
-module.exports.handler = function(event, context) {
+export function handler (event, context) {
 
-  lib.respond(event, function(error, response) {
-    return context.done(error, response);
-  });
-};
+  context.succeed("This is supposed to be a GraphQl endpoint.");
+}

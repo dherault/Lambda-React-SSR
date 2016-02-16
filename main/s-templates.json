@@ -1,0 +1,16 @@
+{
+  "renderingRequestTemplate": {
+    "application/json": {
+      "resourcePath": "$context.resourcePath",
+      "queryString": "#foreach($key in $input.params().querystring.keySet())#if($foreach.index > 0)&#end$util.urlEncode($key)=$util.urlEncode($input.params().querystring.get($key))#end",
+      "pathKey1": "$util.escapeJavaScript($input.params().path.get('pathKey1'))",
+      "pathKey2": "$util.escapeJavaScript($input.params().path.get('pathKey2'))",
+      "pathKey3": "$util.escapeJavaScript($input.params().path.get('pathKey3'))",
+      "pathKey4": "$util.escapeJavaScript($input.params().path.get('pathKey4'))",
+      "pathKey5": "$util.escapeJavaScript($input.params().path.get('pathKey5'))"
+    }
+  },
+  "renderingResponseTemplate": {
+    "text/html": "#set($inputRoot = $input.path('$'))$inputRoot"
+  }
+}
