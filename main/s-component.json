@@ -7,7 +7,7 @@
       "transforms": [{
         "name": "babelify",
         "opts": {
-          "presets": ["es2015", "stage2"]
+          "presets": ["es2015", "stage-2"]
         }
       }]
     }

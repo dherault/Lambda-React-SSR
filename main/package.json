@@ -15,6 +15,7 @@
     "babel-preset-stage-2": "^6.5.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.5.0",
     "serverless-helpers-js": "~0.1.0"
   }
 }

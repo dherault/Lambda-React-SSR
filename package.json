@@ -11,6 +11,7 @@
   },
   "scripts": {
     "start": "npm run serve",
+    "watch": "nodemon -w ./main",
     "serve": "cross-env DEBUG=true sls serve start -P 3000",
     "db:listTables": "babel-node dynamodb/listTables.js",
     "db:createTables": "babel-node dynamodb/createTables.js",
@@ -25,6 +26,6 @@
     "cross-env": "^1.0.7",
     "dotenv": "^2.0.0",
     "serverless-optimizer-plugin": "^1.1.0",
-    "serverless-serve": "^1.4.0"
+    "serverless-serve": "^1.5.0"
   }
 }

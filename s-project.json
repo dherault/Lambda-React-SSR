@@ -5,6 +5,12 @@
   "location": "https://github.com/dherault/Aquest.git",
   "author": "David Hérault",
   "description": "A Slick New Serverless Project",
-  "custom": {},
+  "custom": {
+    "serverless-serve": {
+      "babelOptions": {
+        "presets": ["es2015", "stage-2"]
+      }
+    }
+  },
   "plugins": ["serverless-optimizer-plugin", "serverless-serve"]
 }

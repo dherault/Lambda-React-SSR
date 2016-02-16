@@ -9,7 +9,6 @@
     "excludePatterns": [],
     "envVars": []
   },
-  "runtime": "nodejs",
   "endpoints": [
     {
       "path": "graphql",
