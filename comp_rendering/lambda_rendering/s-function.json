@@ -1,13 +1,13 @@
 {
-  "name": "rendering",
+  "name": "lambda_rendering",
   "customName": false,
   "customRole": false,
-  "handler": "rendering/handler.handler",
+  "handler": "lambda_rendering/handler.handler",
   "timeout": 6,
   "memorySize": 1024,
   "custom": {
     "excludePatterns": [],
-    "envVars": []
+    "envVars": ["CLIENT_BUNDLE_LOCATION"]
   },
   "endpoints": [
     {

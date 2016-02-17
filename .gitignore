@@ -37,3 +37,6 @@ admin.env
 dynamodb.env
 .env
 _meta
+
+# This project
+dist

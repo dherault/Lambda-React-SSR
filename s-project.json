@@ -6,11 +6,11 @@
   "author": "David Hérault",
   "description": "A Slick New Serverless Project",
   "custom": {
-    "serverless-serve": {
+    "serverless-offline": {
       "babelOptions": {
-        "presets": ["es2015", "stage-2"]
+        "presets": ["es2015", "stage-2", "react"]
       }
     }
   },
-  "plugins": ["serverless-optimizer-plugin", "serverless-serve"]
+  "plugins": ["serverless-optimizer-plugin", "serverless-offline"]
 }

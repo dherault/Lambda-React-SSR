@@ -1,14 +1,9 @@
-/**
- * Serverless Module: Lambda Handler
- * - Your lambda functions should be a thin wrapper around your own separate
- * modules, to keep your code testable, reusable and AWS independent
- * - 'serverless-helpers-js' module is required for Serverless ENV var support.  Hopefully, AWS will add ENV support to Lambda soon :)
- */
-
 import render from '../lib/server/renderer';
+import sHelpers from 'serverless-helpers-js';
 import 'babel-polyfill'; 
 
-// Lambda Handler
+sHelpers.loadEnv();
+
 export function handler(event, context) {
   
   // Logging here
@@ -16,9 +11,10 @@ export function handler(event, context) {
   // console.log('context', context);
   
   const userId = null;
+  const isDev = event.isServerlessOffline;
   let urlWithQuery;
   
-  if (event.isServerlessServe) urlWithQuery = event.originalUrl;
+  if (isDev) urlWithQuery = event.path;
   else {
     const path = [event.pathKey1, event.pathKey2, event.pathKey3, event.pathKey4, event.pathKey5]
       .filter(x => x)
@@ -26,7 +22,7 @@ export function handler(event, context) {
     urlWithQuery = `/${path}${(event.queryString ? '?' + event.queryString : '')}`;
   }
   
-  render(urlWithQuery, userId)
+  render(urlWithQuery, userId, isDev)
     .then(response => context.succeed(response))
     .catch(error => context.fail(error));
 }

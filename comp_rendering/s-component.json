@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "comp_rendering",
   "runtime": "nodejs",
   "custom": {
     "optimize": {
@@ -7,7 +7,7 @@
       "transforms": [{
         "name": "babelify",
         "opts": {
-          "presets": ["es2015", "stage-2"]
+          "presets": ["es2015", "stage-2", "react"]
         }
       }]
     }
