@@ -1,6 +1,6 @@
 import onLambda from './utils/onLambda';
 
-export default markup => {
+export default (markup, serverState) => {
   
   const bundleSrc = onLambda ? 
     // process.env.CLIENT_BUNDLE_LOCATION : 
@@ -16,6 +16,7 @@ export default markup => {
     <body>
     <div id="root">${markup}</div>
     <script src="${bundleSrc}"></script>
+    <script>window.STATE_FROM_SERVER=${JSON.stringify(serverState)}</script>
     </body>
   </html>`;
 };

@@ -1,12 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from '../comp_rendering/lib/shared/components/App';
+import { logStart, log } from '../comp_main/lib/shared/utils/logger';
+import createApp from '../comp_main/lib/shared/createApp';
+import registerSideEffects from './registerSideEffects';
+import registerShortcuts from './registerShortcuts';
 
-console.log('Hello client!');
+logStart('Hello client!');
+
+// App creation
+const { store, userInterface } = createApp(window.STATE_FROM_SERVER || {});
 
 render(
-  <App />,
+  userInterface,
   document.getElementById('root'),
-  () => console.log('App rendered')
+  () => log('App rendered')
 );
+
+registerSideEffects(store); // Side effects init
+registerShortcuts(store); // Keyboard shortcuts init

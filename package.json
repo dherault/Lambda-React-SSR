@@ -12,7 +12,7 @@
   "scripts": {
     "x": "npm run dev & npm run watch",
     "start": "npm run offline",
-    "watch": "nodemon -w ./comp_rendering",
+    "watch": "nodemon -w ./comp_main",
     "offline": "sls offline start",
     "dev": "babel-node dev_server/dev_server.js",
     "deploy": "npm run build && sls dash deploy",
@@ -26,7 +26,11 @@
   },
   "dependencies": {
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "react-router-redux": "^3.0.0",
+    "redux": "^3.3.1"
   },
   "devDependencies": {
     "aws-sdk": "^2.2.36",

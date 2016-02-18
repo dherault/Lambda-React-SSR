@@ -1,5 +1,5 @@
 {
-  "name": "comp_rendering",
+  "name": "comp_main",
   "runtime": "nodejs",
   "custom": {
     "optimize": {
