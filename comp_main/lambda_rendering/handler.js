@@ -20,7 +20,7 @@ export function handler(event, context) {
     const path = [event.pathKey1, event.pathKey2, event.pathKey3, event.pathKey4, event.pathKey5]
       .filter(x => x)
       .join('/');
-    urlWithQuery = `/${path}${(event.queryString ? '?' + event.queryString : '')}`;
+    urlWithQuery = `/dev/${path}${(event.queryString ? '?' + event.queryString : '')}`;
   }
   
   render(urlWithQuery, userId)

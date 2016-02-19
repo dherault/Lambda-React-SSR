@@ -32,7 +32,8 @@ export default function registerSideEffects(store, ...additionnalSideEffects) {
     }
   });
   
-  log(`Registering ${Object.keys(finalSideEffects).length} side effects`);
+  const seKeys = Object.keys(finalSideEffects);
+  log(`Registering ${seKeys.length} side effects: ${seKeys.join(', ')}`);
   
   let recordsIndex = 0;
   const { getState, dispatch } = store;
