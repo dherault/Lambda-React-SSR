@@ -1,6 +1,6 @@
 import { routeActions } from 'react-router-redux';
-import ac from '../comp_main/lib/shared/state/actionCreators';
-import { createLogger } from '../comp_main/lib/shared/utils/logger';
+import ac from '../../comp_main/lib/shared/state/actionCreators';
+import { createLogger } from '../../comp_main/lib/shared/utils/logger';
 
 const log = createLogger({
   prefix: '.E.',

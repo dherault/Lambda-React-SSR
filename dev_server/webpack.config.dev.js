@@ -8,10 +8,10 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     `webpack-hot-middleware/client?path=${config.url}__webpack_hmr`,
-    path.resolve(__dirname, '../client/client.js')
+    path.resolve(__dirname, '../client/src/client.js')
   ],
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../client/dist'),
     filename: 'bundle.js',
     publicPath: config.url
   },

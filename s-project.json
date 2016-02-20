@@ -17,5 +17,10 @@
       }
     }
   },
-  "plugins": ["serverless-optimizer-plugin", "serverless-offline", "serverless-serve"]
+  "plugins": [
+    "serverless-optimizer-plugin", 
+    "serverless-offline", 
+    "serverless-serve",
+    "serverless-client-s3"
+  ]
 }

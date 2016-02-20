@@ -4,10 +4,10 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    path.resolve(__dirname, '../client/client.js')
+    path.resolve(__dirname, '../client/src/client.js')
   ],
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../client/dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
