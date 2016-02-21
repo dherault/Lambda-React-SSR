@@ -2,8 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var config = require('../config/webpack.js');
 
-console.log(__dirname);
-
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
@@ -32,7 +30,7 @@ module.exports = {
       }
     },{ 
       test: /\.css$/, 
-      loaders: ['style', 'css', 'postcss'],
+      loaders: ['style', 'css'],
       exclude: /node_modules/
     }]
   }

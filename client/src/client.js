@@ -19,3 +19,5 @@ render(
 
 registerSideEffects(store); // Side effects init
 registerShortcuts(store); // Keyboard shortcuts init
+
+if (process.env.NODE_ENV !== 'production') require('./stylesheets/app.css');
