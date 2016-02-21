@@ -1,3 +1,4 @@
+import { minify } from 'html-minifier';
 import onLambda from './utils/onLambda';
 
 export default function generateHTML(markup, serverState) {
@@ -16,7 +17,7 @@ export default function generateHTML(markup, serverState) {
     `<link rel="stylesheet" href="${bundleLocation}bundle.css">` : 
     '';
   
-  return `<html>
+  return minify(`<html>
     <head>
       <meta charset="UTF-8">
       <title>Aquest</title>
@@ -28,5 +29,9 @@ export default function generateHTML(markup, serverState) {
     <script src="${jsBundleLocation}"></script>
     ${serverStateNode}
     </body>
-  </html>`;
+  </html>`, {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeTagWhitespace: true,
+  });
 }

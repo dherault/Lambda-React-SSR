@@ -7,11 +7,15 @@ const menuStyle = {
   zIndex: 9999,
 };
 
+const itemStyle = {
+  marginRight: 10,
+};
+
 export default () => <div style={menuStyle}>
-  <Link to='/dev/'>Home</Link> -&nbsp;
-  <Link to='/dev/test'>Test page</Link> -&nbsp;
-  <Link to='/dev/@admin'>Admin user page</Link> -&nbsp;
-  <Link to='/dev/@thisUserDoesNotExist'>404 user page</Link> -&nbsp;
-  <Link to='/dev/thisPageDoesNotExist'>404 page</Link> -&nbsp;
+  <Link style={itemStyle} to='/dev/'>Home</Link>
+  <Link style={itemStyle} to='/dev/test'>Test page</Link>
+  <Link style={itemStyle} to='/dev/@admin'>Admin user page</Link>
+  <Link style={itemStyle} to='/dev/@thisUserDoesNotExist'>404 user page</Link>
+  <Link style={itemStyle} to='/dev/thisPageDoesNotExist'>404 page</Link>
   <a href="https://github.com/dherault/Aquest" target="_blank">Github</a>
 </div>;
