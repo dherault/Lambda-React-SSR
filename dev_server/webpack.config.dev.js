@@ -30,8 +30,11 @@ module.exports = {
       }
     },{ 
       test: /\.css$/, 
-      loaders: ['style', 'css'],
+      loaders: ['style', 'css', 'postcss'],
       exclude: /node_modules/
     }]
+  },
+  postcss: function() {
+    return [require('postcss-cssnext')];
   }
 };

@@ -1,0 +1,42 @@
+{
+  "name": "lambda_graphql",
+  "customName": false,
+  "customRole": false,
+  "handler": "lambda_graphql/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "custom": {
+    "excludePatterns": [],
+    "envVars": []
+  },
+  "endpoints": [
+    {
+      "path": "graphql",
+      "method": "POST",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+          "payload": "$input.json('$')"
+        }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400",
+          "selectionPattern": "400.*"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": ""
+          }
+        }
+      }
+    }
+  ],
+  "events": []
+}

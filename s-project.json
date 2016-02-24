@@ -4,7 +4,7 @@
   "profile": "serverless-v0.4.2",
   "location": "https://github.com/dherault/Aquest.git",
   "author": "David Hérault",
-  "description": "A Slick New Serverless Project",
+  "description": "Aquest",
   "custom": {
     "serverless-serve": {
       "babelOptions": {

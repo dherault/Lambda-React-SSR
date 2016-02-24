@@ -18,13 +18,15 @@
   "dependencies": {
     "babel-polyfill": "^6.5.0",
     "chalk": "^1.1.1",
+    "graphql": "^0.4.18",
+    "graphql-custom-types": "^0.2.0",
     "html-minifier": "^1.2.0",
     "lodash.isplainobject": "^4.0.2",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
-    "react-router-redux": "^3.0.0",
+    "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "serverless-helpers-js": "~0.1.0"
   }

@@ -128,143 +128,146 @@ class TestPage extends React.Component {
     const wrapperStyle = {
       width: '80%',
       margin: 'auto',
+      marginTop: 50,
     };
     
-    return <div style={wrapperStyle} className="section group">
-      
-      <div className="col span_6_of_12">
-      
-        <h1>Test Page</h1>
-        <div>It's time to manually test stuff!</div>
-        { /*
-        <div>
-          <span>Current model: </span>
-          <select value={state.model} onChange={this.handleModelSelection.bind(this)}>
-            {
-              Object.keys(definitions).map(key => <option key={key} value={key}>{ cfc(key) }</option>)
-            }
-          </select>
+    return <div style={wrapperStyle}>
+      <div className="row">
+        
+        <div className="col-md-6">
+          
+          <h1>Test Page</h1>
+          <div>It's time to manually test stuff!</div>
+          { /*
+          <div>
+            <span>Current model: </span>
+            <select value={state.model} onChange={this.handleModelSelection.bind(this)}>
+              {
+                Object.keys(definitions).map(key => <option key={key} value={key}>{ cfc(key) }</option>)
+              }
+            </select>
+          </div>
+          
+          <section>
+            <h2>readAll</h2>
+            <button onClick={this.handleReadAllClick.bind(this)}>readAll</button>
+          </section>
+          
+          <section>
+            <h2>readOne</h2>
+            <input type="text" value={state.id} onChange={this.handleInput.bind(this, 'id')} placeholder="id"/>
+            <button onClick={this.handleReadOneClick.bind(this)}>{ 'read' + m }</button>
+          </section>
+          
+          <section>
+            <h2>updateOne</h2>
+            <input 
+              type="text" 
+              placeholder="id"
+              value={state.id} 
+              onChange={this.handleInput.bind(this, 'id')} />
+            <input 
+              type="text" 
+              placeholder="key"
+              value={state.updateOneKey} 
+              onChange={this.handleInput.bind(this, 'updateOneKey')} />
+            <input 
+              type="text" 
+              placeholder="value"
+              value={state.updateOneValue} 
+              onChange={this.handleInput.bind(this, 'updateOneValue')} />
+            <button onClick={this.handleUpdateOneClick.bind(this)}>{ 'update' + m }</button>
+          </section>
+          
+          <section>
+            <h2>deleteOne</h2>
+            <input type="text" value={state.id} onChange={this.handleInput.bind(this, 'id')} placeholder="id"/>
+            <button onClick={this.handleDeleteOneClick.bind(this)}>{ 'delete' + m }</button>
+          </section>
+          
+          <section>
+            <h2>createUser</h2>
+            <div>
+              <input type="text" value={state.createUserEmail} onChange={this.handleInput.bind(this, 'createUserEmail')} />
+              <input type="text" value={state.createUserPassword} onChange={this.handleInput.bind(this, 'createUserPassword')} />
+              <button onClick={this.handleCreateUserClick.bind(this)}>createUser</button>
+              <button onClick={this.handleCreateUserRandom.bind(this)}>ʘ</button>
+            </div>
+            <div>
+              <button onClick={this.handleCreateXClick.bind(this, 'admin')}>createAdmin</button>
+              <button onClick={this.handleCreateXClick.bind(this, 'joe@joe.joe')}>createJoe</button>
+            </div>
+          </section>
+          
+          <section>
+            <h2>Logout</h2>
+            <button onClick={() => props.dispatch(ac.logout())}>Bye bye!</button>
+          </section>
+          
+          <section>
+            <h2>Failed validation</h2>
+            <button onClick={() => props.dispatch(ac.readAll({ yolo: true }))}>This should fail on client</button>
+            <button onClick={() => window.fetch(config.services.api.url + 'readAll?yolo=true')}>This should fail on server</button>
+          </section>
+          
+          <section>
+            <h2>KVS server</h2>
+            <input 
+              type="text" 
+              placeholder="key"
+              value={state.kvsKey} 
+              onChange={this.handleInput.bind(this, 'kvsKey')} />
+            <input 
+              type="text" 
+              placeholder="value"
+              value={state.kvsValue} 
+              onChange={this.handleInput.bind(this, 'kvsValue')} />
+            <button onClick={this.handleCKvsClick.bind(this, 'get')}>Get</button>
+            <button onClick={this.handleCKvsClick.bind(this, 'set')}>Set</button>
+          </section>
+          
+          <section>
+            <h2>createImage</h2>
+            <div>
+              <input type="integer" value={state.createImageSize} onChange={this.handleInput.bind(this, 'createImageSize')} />
+              <button onClick={this.handleCreateImageClick.bind(this)}>createImage</button>
+              
+            </div>
+              <img src={state.createImageUrl} style={{borderRadius: state.createImageSize/2}}/>
+              <span>{ state.createImageOriginalName }</span>
+              <img src={state.createImageOriginalUrl} />
+            <div>
+            </div>
+          </section>
+          */}
+          
         </div>
         
-        <section>
-          <h2>readAll</h2>
-          <button onClick={this.handleReadAllClick.bind(this)}>readAll</button>
-        </section>
         
-        <section>
-          <h2>readOne</h2>
-          <input type="text" value={state.id} onChange={this.handleInput.bind(this, 'id')} placeholder="id"/>
-          <button onClick={this.handleReadOneClick.bind(this)}>{ 'read' + m }</button>
-        </section>
-        
-        <section>
-          <h2>updateOne</h2>
-          <input 
-            type="text" 
-            placeholder="id"
-            value={state.id} 
-            onChange={this.handleInput.bind(this, 'id')} />
-          <input 
-            type="text" 
-            placeholder="key"
-            value={state.updateOneKey} 
-            onChange={this.handleInput.bind(this, 'updateOneKey')} />
-          <input 
-            type="text" 
-            placeholder="value"
-            value={state.updateOneValue} 
-            onChange={this.handleInput.bind(this, 'updateOneValue')} />
-          <button onClick={this.handleUpdateOneClick.bind(this)}>{ 'update' + m }</button>
-        </section>
-        
-        <section>
-          <h2>deleteOne</h2>
-          <input type="text" value={state.id} onChange={this.handleInput.bind(this, 'id')} placeholder="id"/>
-          <button onClick={this.handleDeleteOneClick.bind(this)}>{ 'delete' + m }</button>
-        </section>
-        
-        <section>
-          <h2>createUser</h2>
+        <div className="col-md-6">
+          
           <div>
-            <input type="text" value={state.createUserEmail} onChange={this.handleInput.bind(this, 'createUserEmail')} />
-            <input type="text" value={state.createUserPassword} onChange={this.handleInput.bind(this, 'createUserPassword')} />
-            <button onClick={this.handleCreateUserClick.bind(this)}>createUser</button>
-            <button onClick={this.handleCreateUserRandom.bind(this)}>ʘ</button>
+          <h2 style={{display:'inline-block'}}>Records</h2>&nbsp;&nbsp;
+          <button onClick={this.handleClear.bind(this)}>Clear</button>
           </div>
-          <div>
-            <button onClick={this.handleCreateXClick.bind(this, 'admin')}>createAdmin</button>
-            <button onClick={this.handleCreateXClick.bind(this, 'joe@joe.joe')}>createJoe</button>
-          </div>
-        </section>
-        
-        <section>
-          <h2>Logout</h2>
-          <button onClick={() => props.dispatch(ac.logout())}>Bye bye!</button>
-        </section>
-        
-        <section>
-          <h2>Failed validation</h2>
-          <button onClick={() => props.dispatch(ac.readAll({ yolo: true }))}>This should fail on client</button>
-          <button onClick={() => window.fetch(config.services.api.url + 'readAll?yolo=true')}>This should fail on server</button>
-        </section>
-        
-        <section>
-          <h2>KVS server</h2>
-          <input 
-            type="text" 
-            placeholder="key"
-            value={state.kvsKey} 
-            onChange={this.handleInput.bind(this, 'kvsKey')} />
-          <input 
-            type="text" 
-            placeholder="value"
-            value={state.kvsValue} 
-            onChange={this.handleInput.bind(this, 'kvsValue')} />
-          <button onClick={this.handleCKvsClick.bind(this, 'get')}>Get</button>
-          <button onClick={this.handleCKvsClick.bind(this, 'set')}>Set</button>
-        </section>
-        
-        <section>
-          <h2>createImage</h2>
-          <div>
-            <input type="integer" value={state.createImageSize} onChange={this.handleInput.bind(this, 'createImageSize')} />
-            <button onClick={this.handleCreateImageClick.bind(this)}>createImage</button>
-            
-          </div>
-            <img src={state.createImageUrl} style={{borderRadius: state.createImageSize/2}}/>
-            <span>{ state.createImageOriginalName }</span>
-            <img src={state.createImageOriginalUrl} />
-          <div>
-          </div>
-        </section>
-        */}
-        
-      </div>
-      
-      
-      <div className="col span_6_of_12">
-        
-        <div>
-        <h2 style={{display:'inline-block'}}>Records</h2>&nbsp;&nbsp;
-        <button onClick={this.handleClear.bind(this)}>Clear</button>
+          <ol start={state.recordsOffset}>
+          { 
+            props.records.map((record, i) => {
+              if (i < state.recordsOffset) return;
+              
+              const { type, payload, params } = record;
+              return <li key={i}>
+                <strong>{ type }</strong>
+                &nbsp;- { JSON.stringify(params) }
+                &nbsp;- { JSON.stringify(payload) }
+              </li>;
+            })
+          }
+          </ol>
+          
         </div>
-        <ol start={state.recordsOffset}>
-        { 
-          props.records.map((record, i) => {
-            if (i < state.recordsOffset) return;
-            
-            const { type, payload, params } = record;
-            return <li key={i}>
-              <strong>{ type }</strong>
-              &nbsp;- { JSON.stringify(params) }
-              &nbsp;- { JSON.stringify(payload) }
-            </li>;
-          })
-        }
-        </ol>
         
       </div>
-      
     </div>;
   }
 }

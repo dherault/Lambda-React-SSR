@@ -7,7 +7,7 @@ export default class App extends React.Component {
       <br />
       <br />
       <br />
-      {`App is working! ___ LandingPage`}
+      {`App is working! _ LandingPage`}
     </div>;
   }
 }

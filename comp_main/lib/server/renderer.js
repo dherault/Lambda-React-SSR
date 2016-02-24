@@ -1,11 +1,12 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match } from 'react-router';
+import { match, RouterContext } from 'react-router';
+import { Provider } from 'react-redux';
 import isPlainObject from 'lodash.isplainobject';
 
 import generateHTML from './generateHTML';
 import routes from '../shared/routes';
-import createApp from '../shared/createApp';
+import configureStore from '../shared/state/configureStore';
 import { logRendering, logError } from '../shared/utils/logger';
 
 const log = logRendering;
@@ -27,10 +28,14 @@ export default function render(location, userId) {
       else if (renderProps) {
         
         // App creation
-        const { store, userInterface } = createApp(initialState, renderProps);
+        const store = configureStore(initialState);
         
         try {
-          var mountMeImFamous = renderToString(userInterface);
+          var mountMeImFamous = renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          );
         }
         catch (err) {
           return reject(err);

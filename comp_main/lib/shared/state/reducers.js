@@ -1,16 +1,9 @@
-import { createLogger } from '../utils/logger';
-
-const log = createLogger({
-  prefix: '.R.',
-  chalk: 'bgCyan',
-  textClient: 'White',
-  backgroundClient: 'SkyBlue',
-});
+import { logReducer } from '../utils/logger';
 
 const reducers = {
   users: (state={}, { type, params, payload }) => { // Declaring those 3 variables everytime is only for dev purposes
     
-    log(type); // keep this line in the first reducer
+    logReducer(type); // keep this line in the first reducer
     
     switch (type) {
       

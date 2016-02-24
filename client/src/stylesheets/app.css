@@ -1,6 +1,7 @@
 /* Custom css if needed */
 
 @import './normalize.css';
+@import './flexboxgrid.css';
 
 .test {
   color: blue;

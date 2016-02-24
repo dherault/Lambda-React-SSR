@@ -35,6 +35,12 @@ export const logWebsocket = createLogger({
   textClient: 'White',
   backgroundClient: 'DarkSlateGray',
 });
+export const logReducer = createLogger({
+  prefix: '.R.',
+  chalk: 'bgCyan',
+  textClient: 'White',
+  backgroundClient: 'SkyBlue',
+});
 
 export function createLogger(options={}) {
   

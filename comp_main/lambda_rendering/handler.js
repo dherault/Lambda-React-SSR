@@ -26,4 +26,6 @@ export function handler(event, context) {
   render(urlWithQuery, userId)
     .then(response => context.succeed(response))
     .catch(error => context.fail(error));
+  
+  // context.fail(new Error('Yolo error: too much swag.'));
 }
