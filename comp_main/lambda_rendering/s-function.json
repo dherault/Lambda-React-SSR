@@ -19,8 +19,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
         },
         "default": {
           "statusCode": "200",
@@ -41,8 +47,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
         },
         "default": {
           "statusCode": "200",
@@ -63,8 +75,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
         },
         "default": {
           "statusCode": "200",
@@ -85,8 +103,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
         },
         "default": {
           "statusCode": "200",
@@ -107,8 +131,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
         },
         "default": {
           "statusCode": "200",
@@ -129,8 +159,14 @@
       "requestParameters": {},
       "requestTemplates": "$${renderingRequestTemplate}",
       "responses": {
-        "400": {
-          "statusCode": "400"
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->.*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
         },
         "default": {
           "statusCode": "200",

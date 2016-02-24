@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import isPlainObject from 'lodash.isplainobject';
 
 import generateHTML from './generateHTML';
-import routes from '../shared/routes';
-import configureStore from '../shared/state/configureStore';
-import { logRendering, logError } from '../shared/utils/logger';
+import routes from '../../shared/routes';
+import configureStore from '../../shared/state/configureStore';
+import { logRendering, logError } from '../../shared/utils/logger';
 
 const log = logRendering;
 
@@ -15,20 +15,25 @@ export default function render(location, userId) {
   
   return new Promise((resolve, reject) => {
     
-    // const mountMeImFamous = renderToString(<App />);
-    // const html = generateHTML(mountMeImFamous);
-    
-    
-    const initialState = {};
-    
     match({ routes, location }, (err, redirectLocation, renderProps) => {
-    
+      
       if (err) return reject(err); // Needs attention
       else if (redirectLocation) return reject('Someone please implement redirection');
       else if (renderProps) {
         
+        // console.log(Object.keys(renderProps));
+        // console.log(renderProps.components[1].name)
+        
+        let is404 = false;
+        
+        // A bit fragile
+        renderProps.components.forEach(component => {
+          if (typeof component.getName === 'function' && component.getName() === 'NotFound') is404 = true;
+        });
+        // console.log('is404:', is404);
+        
         // App creation
-        const store = configureStore(initialState);
+        const store = configureStore(/*initialState*/);
         
         try {
           var mountMeImFamous = renderToString(
@@ -50,9 +55,11 @@ export default function render(location, userId) {
           if (isPlainObject(serverState[key]) && !Object.keys(serverState[key]).length) delete serverState[key]; // Goodbye empty keys
         }
         
-        resolve(generateHTML(mountMeImFamous, serverState));
+        const html = generateHTML(mountMeImFamous, serverState, is404);
+        
+        return is404 ? reject(html) : resolve(html);
       }
-      else return reject('Someone please implement 404');
+      else return reject('Someone please implement 404 outside of routes');
     });
   });
 }

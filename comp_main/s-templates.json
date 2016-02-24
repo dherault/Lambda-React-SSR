@@ -12,5 +12,8 @@
   },
   "renderingResponseTemplate": {
     "text/html": "#set($inputRoot = $input.path('$'))$inputRoot"
+  },
+  "renderingResponse404Template": {
+    "text/html": "#set($inputRoot = $input.path('$'))$inputRoot.errorMessage"
   }
 }

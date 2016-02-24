@@ -1,7 +1,7 @@
 import 'babel-polyfill'; 
 import sHelpers from 'serverless-helpers-js';
-import onLambda from '../lib/server/utils/onLambda';
-import runGraphQL from '../lib/server/runGraphQL';
+// import onLambda from '../lib/server/utils/onLambda';
+import runGraphQL from '../lib/server/graphql/runGraphQL';
 
 sHelpers.loadEnv();
 
@@ -11,14 +11,10 @@ export function handler(event, context) {
   // console.log('event', event);
   // console.log('context', context);
   
-  // const userId = null;
-  const query = event.payload;
-  console.log(query);
+  // Is it 400 or 422 ?
+  if (!event.payload || !event.payload.query) return context.fail('BAD REQUEST: missing query key in payload');
   
-  runGraphQL(query)
+  runGraphQL(event.payload.query)
     .then(result => context.succeed(result))
-    .catch(result => context.fail(result))
-  // context.fail(new Error('Yolo error: too much swag.'));
-  // context.fail(new Error('400 oh no!'));
-  // context.succeed({ query: query || 'nothing' });
+    .catch(result => context.fail(result));
 }

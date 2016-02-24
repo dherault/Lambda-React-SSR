@@ -3,6 +3,10 @@ import { Link } from 'react-router';
 
 export default class NotFound extends React.Component {
   
+  static getName() {
+    return 'NotFound';
+  }
+  
   render() {
     return (
       <div>

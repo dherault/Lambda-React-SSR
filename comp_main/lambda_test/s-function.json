@@ -1,0 +1,48 @@
+{
+  "name": "lambda_test",
+  "customName": false,
+  "customRole": false,
+  "handler": "lambda_test/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "custom": {
+    "excludePatterns": [],
+    "envVars": []
+  },
+  "endpoints": [
+    {
+      "path": "lambda_test",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": ""
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "404": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "selectionPattern": "<!DOCTYPE html><!-- 404 -->(.|\n)*",
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponse404Template}"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "text/html": "Empty"
+          },
+          "responseTemplates": "$${renderingResponseTemplate}"
+        }
+      }
+    }
+  ],
+  "events": []
+}

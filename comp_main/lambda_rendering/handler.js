@@ -1,6 +1,6 @@
 import 'babel-polyfill'; 
 import sHelpers from 'serverless-helpers-js';
-import render from '../lib/server/renderer';
+import render from '../lib/server/rendering/render';
 import onLambda from '../lib/server/utils/onLambda';
 
 sHelpers.loadEnv();
