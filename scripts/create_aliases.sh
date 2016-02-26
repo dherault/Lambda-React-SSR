@@ -4,6 +4,7 @@ echo -n "Continue ? (y/n)"
 read answer
 if echo "$answer" | grep -iq "^y" ;then
   echo "alias n='npm start'" >> /home/libe/.bashrc
+  echo "alias resync='sudo ntpdate ntp.ubuntu.com'" >> /home/libe/.bashrc
   echo "alias c9='node /home/libe/cloud9sdk/server.js -p 3333 --listen 0.0.0.0 -w /home/libe -a :'" >> /home/libe/.bashrc
   echo "alias commit='sh /home/libe/aquest/scripts/quick_commit.sh'" >> /home/libe/.bashrc
   echo "alias deploy='sls dash deploy'" >> /home/libe/.bashrc

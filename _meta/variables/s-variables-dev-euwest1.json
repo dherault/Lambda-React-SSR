@@ -1,0 +1,6 @@
+{
+  "region": "eu-west-1",
+  "resourcesStackName": "aquest-dev-r",
+  "iamRoleArnLambda": "arn:aws:iam::864842660474:role/aquest-dev-r-IamRoleLambda-APLRI37WTDDC",
+  "apiGatewayApi": "aquest"
+}

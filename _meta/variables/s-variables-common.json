@@ -1,0 +1,6 @@
+{
+  "project": "aquest",
+  "projectBucket": "serverless.eu-west-1.aquest-serverless-files",
+  "domain": "aquest-serverless-files",
+  "notificationEmail": "dherault@gmail.com"
+}
