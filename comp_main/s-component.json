@@ -3,13 +3,21 @@
   "runtime": "nodejs",
   "custom": {
     "optimize": {
-      "exclude": [ "aws-sdk" ],
-      "transforms": [{
-        "name": "babelify",
-        "opts": {
-          "presets": ["es2015", "stage-2", "react"]
+      "exclude": [
+        "aws-sdk"
+      ],
+      "transforms": [
+        {
+          "name": "babelify",
+          "opts": {
+            "presets": [
+              "es2015",
+              "stage-2",
+              "react"
+            ]
+          }
         }
-      }]
+      ]
     }
   }
 }

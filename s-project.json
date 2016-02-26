@@ -8,18 +8,26 @@
   "custom": {
     "serverless-serve": {
       "babelOptions": {
-        "presets": ["es2015", "stage-2", "react"]
+        "presets": [
+          "es2015",
+          "stage-2",
+          "react"
+        ]
       }
     },
     "serverless-offline": {
       "babelOptions": {
-        "presets": ["es2015", "stage-2", "react"]
+        "presets": [
+          "es2015",
+          "stage-2",
+          "react"
+        ]
       }
     }
   },
   "plugins": [
-    "serverless-optimizer-plugin", 
-    "serverless-offline", 
+    "serverless-optimizer-plugin",
+    "serverless-offline",
     "serverless-serve",
     "serverless-client-s3"
   ]
