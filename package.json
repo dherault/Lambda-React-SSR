@@ -27,8 +27,9 @@
     "deploy_client:css": "aws s3 cp client/dist/bundle.css s3://aquest-client/bundle.css --acl public-read",
     "display_js_bundle_size": "du -h client/dist/bundle.js",
     "db:listTables": "babel-node scripts/dynamodb/listTables.js",
-    "db:createTables": "babel-node scripts/dynamodb/createTables.js && npm run db:listTables",
-    "db:deleteTables": "babel-node scripts/dynamodb/deleteTables.js && npm run db:listTables"
+    "db:createTables": "babel-node scripts/dynamodb/createTables.js",
+    "db:deleteTables": "babel-node scripts/dynamodb/deleteTables.js",
+    "db:resetTables": "npm run db:deleteTables && npm run db:createTables && npm run db:listTables"
   },
   "dependencies": {
     "react": "^0.14.7",

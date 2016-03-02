@@ -12,10 +12,9 @@ export function handler(event, context) {
   // console.log('context', context);
   
   // Is it 400 or 422 ?
-  console.log('handler event', event);
-  if (!event.payload || !event.payload.query) return context.fail('BAD REQUEST: missing query key in payload');
+  if (!event.payload || !event.payload.query) return context.fail('BAD_REQUEST: missing query key in payload');
   
   runGraphQL(event.payload.query, event.sourceIp)
     .then(result => context.succeed(result))
-    .catch(result => context.fail(result));
+    .catch(error => context.fail(error));
 }

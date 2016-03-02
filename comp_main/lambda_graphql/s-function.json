@@ -3,7 +3,7 @@
   "customName": false,
   "customRole": false,
   "handler": "lambda_graphql/handler.handler",
-  "timeout": 6,
+  "timeout": 10,
   "memorySize": 1024,
   "custom": {
     "excludePatterns": [],
@@ -26,7 +26,19 @@
       "responses": {
         "400": {
           "statusCode": "400",
-          "selectionPattern": "BAD REQUEST.*"
+          "selectionPattern": "BAD_REQUEST:.*"
+        },
+        "404": {
+          "statusCode": "404",
+          "selectionPattern": "NOT_FOUND:.*"
+        },
+        "409": {
+          "statusCode": "409",
+          "selectionPattern": "CONFLICT:.*"
+        },
+        "500": {
+          "statusCode": "500",
+          "selectionPattern": "BAD_IMPLEMENTATION:.*"
         },
         "default": {
           "statusCode": "200",

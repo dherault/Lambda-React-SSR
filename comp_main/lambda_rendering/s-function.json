@@ -3,7 +3,7 @@
   "customName": false,
   "customRole": false,
   "handler": "lambda_rendering/handler.handler",
-  "timeout": 6,
+  "timeout": 10,
   "memorySize": 1024,
   "custom": {
     "excludePatterns": [],

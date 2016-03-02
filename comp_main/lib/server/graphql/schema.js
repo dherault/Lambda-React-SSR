@@ -18,8 +18,9 @@ import {
 } from 'graphql-custom-types'; // https://github.com/stylesuxx/graphql-custom-types
 
 import {
-  createUser
-} from './dynamoDB';
+  createUser,
+  readUserByEmailOrUsername,
+} from '../dynamodb';
 
 /* -------*/
 /* MODELS */
@@ -45,7 +46,7 @@ const userType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The hashed password of the user.',
     },
-    verified: {
+    isVerified: {
       type: GraphQLBoolean,
       description: "Indicates if the user's email has been verified.",
     },
@@ -62,7 +63,7 @@ const queryType = new GraphQLObjectType({
     
     // readUser query example:
     // { user(id: \"100\") { id, email, username, passwordHash }  }
-    user: {
+    readUser: {
       description: 'Get user by id.',
       type: userType,
       args: {
@@ -77,6 +78,19 @@ const queryType = new GraphQLObjectType({
         email: 'admin@admin.com',
       }),
     },
+    // readUserByEmailOrUsername query example:
+    // { readUserByEmailOrUsername(emailOrUsername: \"coco75\") { id, email, username, passwordHash }  }
+    readUserByEmailOrUsername: {
+      description: 'Get user by id.',
+      type: userType,
+      args: {
+        emailOrUsername: {
+          description: 'email or username of the user.',
+          type: new GraphQLNonNull(GraphQLString)
+        }
+      },
+      resolve: (root, { emailOrUsername }) => readUserByEmailOrUsername(emailOrUsername),
+    },
   }
 });
 
@@ -85,7 +99,7 @@ const queryType = new GraphQLObjectType({
 /* MUTATIONS */
 /* ----------*/
 
-const getMutationType = sourceIp => new GraphQLObjectType({
+const mutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     
@@ -105,7 +119,7 @@ const getMutationType = sourceIp => new GraphQLObjectType({
           type: new GraphQLLimitedString(8) // GraphQLPassword is overkill
         },
       },
-      resolve: (source, args) => createUser(args, sourceIp),
+      resolve: (root, args) => createUser(args, root.sourceIp),
     }
   }
 });
@@ -115,9 +129,7 @@ const getMutationType = sourceIp => new GraphQLObjectType({
 /* SCHEMA */
 /* -------*/
 
-export default function getSchema(sourceIp) {
-  return new GraphQLSchema({
-    query: queryType,
-    mutation: getMutationType(sourceIp), // For every mutation, the issuer ip is recorded
-  });
-}
+export default new GraphQLSchema({
+  query: queryType,
+  mutation: mutationType,
+});

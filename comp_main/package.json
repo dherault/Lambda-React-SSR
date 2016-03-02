@@ -19,6 +19,7 @@
     "babel-polyfill": "^6.5.0",
     "bcrypt": "^0.8.5",
     "chalk": "^1.1.1",
+    "dynamodb-data-types": "^2.1.6",
     "graphql": "^0.4.18",
     "graphql-custom-types": "^0.2.0",
     "html-minifier": "^1.2.0",
