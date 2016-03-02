@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const menuStyle = {
-  position: 'absolute',
-  top: 0,
-  zIndex: 9999,
+  margin: 'auto',
+  textAlign: 'center',
 };
 
 const itemStyle = {

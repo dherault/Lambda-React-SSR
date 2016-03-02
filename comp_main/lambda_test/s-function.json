@@ -18,28 +18,27 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-        "application/json": ""
+        "application/json": {
+          "params": "$input.params()",
+          "alwaysTrue": "$offline.alwaysTrue",
+          "alwaysFalse": "$offline.alwaysFalse",
+          "alwaysZero": "$offline.alwaysZero",
+          "alwaysOne": "$offline.alwaysOne",
+          "alwaysUndefined": "$offline.alwaysUndefined",
+          "alwaysNull": "$offline.alwaysNull"
+        }
       },
       "responses": {
         "400": {
           "statusCode": "400"
         },
-        "404": {
-          "statusCode": "404",
-          "responseParameters": {},
-          "selectionPattern": "<!DOCTYPE html><!-- 404 -->(.|\n)*",
-          "responseModels": {
-            "text/html": "Empty"
-          },
-          "responseTemplates": "$${renderingResponse404Template}"
-        },
         "default": {
           "statusCode": "200",
           "responseParameters": {},
-          "responseModels": {
-            "text/html": "Empty"
-          },
-          "responseTemplates": "$${renderingResponseTemplate}"
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": ""
+          }
         }
       }
     }

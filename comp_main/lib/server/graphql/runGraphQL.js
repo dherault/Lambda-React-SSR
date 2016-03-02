@@ -1,12 +1,13 @@
 import { graphql } from 'graphql';
-import Schema from './schema';
+import getSchema from './schema';
 import { logFetch } from '../../shared/utils/logger';
 
-export default function runGraphQL(query) {
+/* Runs a GraphQL query, returns a promise */
+export default function runGraphQL(query, sourceIp) {
   
   logFetch('→', query);
   
-  return graphql(Schema, query).then(result => {
+  return graphql(getSchema(sourceIp), query).then(result => {
     
     if (result.errors) {
       const n = result.errors.length;

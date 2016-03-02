@@ -6,3 +6,17 @@
 .test {
   color: blue;
 }
+
+.landing_wrapper {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+.newadventure_wrapper {
+  width: 100%;
+  min-height: 500px;
+  background-color: #000;
+  
+}

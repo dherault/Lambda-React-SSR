@@ -6,6 +6,7 @@ import {
   GraphQLNonNull,
   GraphQLSchema,
   GraphQLString,
+  GraphQLBoolean
 } from 'graphql/type';
 
 import {
@@ -14,7 +15,11 @@ import {
 //   GraphQLDateTime,
   GraphQLLimitedString,
   // GraphQLPassword
-} from 'graphql-custom-types';
+} from 'graphql-custom-types'; // https://github.com/stylesuxx/graphql-custom-types
+
+import {
+  createUser
+} from './dynamoDB';
 
 /* -------*/
 /* MODELS */
@@ -23,7 +28,7 @@ import {
 const userType = new GraphQLObjectType({
   name: 'User',
   description: 'A user.', // Inspired
-  fields: () => ({
+  fields: {
     id: {
       type: GraphQLString,
       description: 'The id of the user.',
@@ -40,7 +45,11 @@ const userType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The hashed password of the user.',
     },
-  }),
+    verified: {
+      type: GraphQLBoolean,
+      description: "Indicates if the user's email has been verified.",
+    },
+  },
 });
 
 /* --------*/
@@ -49,7 +58,10 @@ const userType = new GraphQLObjectType({
 
 const queryType = new GraphQLObjectType({
   name: 'Query',
-  fields: () => ({
+  fields: {
+    
+    // readUser query example:
+    // { user(id: \"100\") { id, email, username, passwordHash }  }
     user: {
       description: 'Get user by id.',
       type: userType,
@@ -65,7 +77,7 @@ const queryType = new GraphQLObjectType({
         email: 'admin@admin.com',
       }),
     },
-  })
+  }
 });
 
 
@@ -73,9 +85,12 @@ const queryType = new GraphQLObjectType({
 /* MUTATIONS */
 /* ----------*/
 
-const mutationType = new GraphQLObjectType({
+const getMutationType = sourceIp => new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    
+    // createUser query example:
+    // mutation createUser { user: createUser (username: \"coco75\", password: \"12345678\", email: \"abc@mail.com\") { id, username, email } }
     createUser: {
       type: userType,
       description: 'Create a new user.',
@@ -84,15 +99,13 @@ const mutationType = new GraphQLObjectType({
           type: new GraphQLLimitedString(3, 15, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-')
         },
         email: {
-          // type: new GraphQLPassword(/*...*/)
-          type: GraphQLEmail
+          type: new GraphQLNonNull(GraphQLEmail)
         },
         password: {
-          // type: new GraphQLPassword(/*...*/)
-          type: new GraphQLNonNull(GraphQLString)
+          type: new GraphQLLimitedString(8) // GraphQLPassword is overkill
         },
       },
-      resolve: (source, args) => args,
+      resolve: (source, args) => createUser(args, sourceIp),
     }
   }
 });
@@ -102,7 +115,9 @@ const mutationType = new GraphQLObjectType({
 /* SCHEMA */
 /* -------*/
 
-export default new GraphQLSchema({
-  query: queryType,
-  mutation: mutationType,
-});
+export default function getSchema(sourceIp) {
+  return new GraphQLSchema({
+    query: queryType,
+    mutation: getMutationType(sourceIp), // For every mutation, the issuer ip is recorded
+  });
+}

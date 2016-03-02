@@ -14,8 +14,8 @@ export function handler(event, context) {
   // error.code = 404;
   // context.fail(error); 
   
-  const htmlSuccess = '<!DOCTYPE html><html><body>Success!</body></html>';
-  const htmlFailure = '<!DOCTYPE html><!-- 404 --><html><body>This is 404</body></html>';
-  
-  context.fail(htmlFailure);
+  // const htmlSuccess = '<!DOCTYPE html><html><body>Success!</body></html>';
+  // const htmlFailure = '<!DOCTYPE html><!-- 404 --><html><body>This is 404</body></html>';
+  console.log(event);
+  // context.succeed(event);
 }

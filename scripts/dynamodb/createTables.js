@@ -1,7 +1,13 @@
 import db from './connect';
-import tables from './tables';
+import dynamodbConfig from '../../config/dynamodb';
 
-tables.forEach(params => db.createTable(params, (err, data) => {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-}));
+const tables = dynamodbConfig.getTables({
+  stage: 'dev',
+});
+
+for (let key in tables) {
+  db.createTable(tables[key], (err, data) => {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);           // successful response
+  });
+}

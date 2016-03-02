@@ -19,7 +19,8 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-          "payload": "$input.json('$')"
+          "payload": "$input.json('$')",
+          "sourceIp": "$context.identity.sourceIp"
         }
       },
       "responses": {
