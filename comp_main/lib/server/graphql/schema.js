@@ -62,7 +62,7 @@ const queryType = new GraphQLObjectType({
   fields: {
     
     // readUser query example:
-    // { user(id: \"100\") { id, email, username, passwordHash }  }
+    // { readUser(id: \"100\") { id, email, username, passwordHash }  }
     readUser: {
       description: 'Get user by id.',
       type: userType,
@@ -74,7 +74,7 @@ const queryType = new GraphQLObjectType({
       },
       resolve: (root, { id }) => ({
         id,
-        username: 'admin',
+        username: 'to_be_implemented',
         email: 'admin@admin.com',
       }),
     },

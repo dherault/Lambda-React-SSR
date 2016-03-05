@@ -1,7 +1,7 @@
 {
   "name": "lambda_graphql",
   "customName": false,
-  "customRole": false,
+  "customRole": "arn:aws:iam::864842660474:role/lambda_graphql_role",
   "handler": "lambda_graphql/handler.handler",
   "timeout": 10,
   "memorySize": 1024,
