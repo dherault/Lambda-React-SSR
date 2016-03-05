@@ -1,9 +1,13 @@
 import uuid from 'uuid';
-import bcrypt from 'bcrypt'; // pbkdf2 can be accelerated with GPU, so bcrypt. http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage
 
-import dbClient from '../dbClient';
-import tables from '../tables';
+import onLambda from '../../utils/onLambda';
+import { dbClient, tables } from '../main';
 import { log } from '../../../shared/utils/logger';
+
+// pbkdf2 can be accelerated with GPU, so bcrypt. 
+// http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage
+// Also, since bcrypt needs native compilation, I booted up a EC2 with the lambda AMI to compile it: bcrypt-lambda
+const bcrypt = onLambda ? require('../../bcrypt-lambda') : require('bcrypt');
 
 export function createUser({ username, email, password }, sourceIp) {
   
@@ -140,7 +144,7 @@ export function createUser({ username, email, password }, sourceIp) {
             // todo: send verification email with SES
             
           });
-        }).catch(err => {
+        }).catch(err => { // An error is typically thrown by the unicity condition
           
           const { source, error: { code } } = err;
           const alreadyExistsCode = 'ConditionalCheckFailedException';

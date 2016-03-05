@@ -36,3 +36,4 @@ dynamo.env
 # This project
 client/dist/
 _meta/_tmp/
+!comp_main/lib/server/bcrypt_lambda/node_modules

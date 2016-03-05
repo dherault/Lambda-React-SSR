@@ -6,8 +6,8 @@ if echo "$answer" | grep -iq "^y" ;then
   echo "alias n='npm start'" >> /home/libe/.bashrc
   echo "alias resync='sudo ntpdate ntp.ubuntu.com'" >> /home/libe/.bashrc
   echo "alias c9='node /home/libe/cloud9sdk/server.js -p 3333 --listen 0.0.0.0 -w /home/libe -a :'" >> /home/libe/.bashrc
-  echo "alias commit='sudo ntpdate ntp.ubuntu.com && sh /home/libe/aquest/scripts/quick_commit.sh'" >> /home/libe/.bashrc
-  echo "alias publish='sudo ntpdate ntp.ubuntu.com && npm publish'" >> /home/libe/.bashrc
+  echo "alias commit='sh /home/libe/aquest/scripts/reset_time_ubuntu.sh && sh /home/libe/aquest/scripts/quick_commit.sh'" >> /home/libe/.bashrc
+  echo "alias publish='sh /home/libe/aquest/scripts/reset_time_ubuntu.sh && npm publish'" >> /home/libe/.bashrc
   echo "alias deploy='sls dash deploy'" >> /home/libe/.bashrc
   echo "alias deploy1='(cd /home/libe/aquest/comp_main/lambda_rendering && sls function deploy)'" >> /home/libe/.bashrc
   echo "alias deploy1e='(cd /home/libe/aquest/comp_main/lambda_rendering && sls endpoint deploy)'" >> /home/libe/.bashrc

@@ -1,5 +1,4 @@
-import dbClient from '../dbClient';
-import tables from '../tables';
+import { dbClient, tables } from '../main';
 import deserialize from '../helpers/deserialize';
 import { log } from '../../../shared/utils/logger';
 

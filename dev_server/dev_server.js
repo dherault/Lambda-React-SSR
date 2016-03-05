@@ -1,6 +1,6 @@
 import express from 'express';
 import webpack from 'webpack';
-import config from '../config/webpack';
+import config from './config';
 import webpackConfig from './webpack.config.dev';
 // import { logStart, logError } from '../../shared/utils/logger';
 
@@ -16,7 +16,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.listen(port, '0.0.0.0', err => {
-  if (err) return console.log('dev_server start', err);
+  if (err) return console.log(err.stack);
   
   console.log(`Webpack server listening on port ${port}`);
 });

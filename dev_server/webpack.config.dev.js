@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var config = require('../config/webpack.js');
+var config = require('./config');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',

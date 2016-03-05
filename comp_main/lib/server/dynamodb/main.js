@@ -1,18 +1,9 @@
-import dotenv from 'dotenv';
+import onLambda from '../utils/onLambda';
+import AWS from 'aws-sdk';
 
-// Load credentials from file (THIS IS BAD!!!)
-dotenv.config({ path: 'dynamodb.env' });
-
-const { DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID, DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY } = process.env;
-
-if (!DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID || !DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY) {
-  console.log('Error: env variables not found!');
-  process.exit(0);
-}
+/* This file could be splitted, but is not for dev convenience */
 
 const config = {
-  accessKeyId: DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID,
-  secretAccessKey: DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY,
   regions: ['eu-west-1'],
   
   // http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_CreateTable.html
@@ -91,7 +82,37 @@ const config = {
   }
 };
 
-// Don't know ow to handle multiple regions yet
+// Don't know how to handle multiple regions yet
 config.mainRegion = config.regions[0];
 
-export default config;
+// Options to create db client
+const clientOptions = {
+  apiVersion: '2012-08-10',
+  region: config.mainRegion,
+};
+
+// Lambdas accessing the database should have the proper IAM to operate with DynamoDb
+// For local dev, we load the credential from a file:
+if (!onLambda) {
+  require('dotenv').config({ path: 'dynamodb.env' });
+  
+  const { DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID, DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY } = process.env;
+  
+  if (!DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID || !DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY) {
+    console.log('Error: dynamodb.env variables not found!');
+    process.exit(0);
+  }
+  
+  clientOptions.accessKeyId = DYNAMODB_ADMIN_AWS_ACCESS_KEY_ID;
+  clientOptions.secretAccessKey = DYNAMODB_ADMIN_AWS_SECRET_ACCESS_KEY;
+}
+
+const dbClient = new AWS.DynamoDB(clientOptions);
+
+const tables = config.getTables({
+  stage: 'dev' // todo: replace with process.env when configured
+});
+
+console.log(process.env);
+
+export { config, dbClient, tables };
