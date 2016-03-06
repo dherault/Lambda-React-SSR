@@ -19,8 +19,11 @@ import {
 
 import {
   createUser,
+  readUser,
   readUserByEmailOrUsername,
 } from '../dynamodb';
+
+import getProjection from './getProjection';
 
 /* -------*/
 /* MODELS */
@@ -42,9 +45,9 @@ const userType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The email of the user.',
     },
-    passwordHash: {
+    passwordDigest: { // For dev purposes only
       type: GraphQLString,
-      description: 'The hashed password of the user.',
+      description: 'The digested password of the user.',
     },
     isVerified: {
       type: GraphQLBoolean,
@@ -72,11 +75,7 @@ const queryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         }
       },
-      resolve: (root, { id }) => ({
-        id,
-        username: 'to_be_implemented',
-        email: 'admin@admin.com',
-      }),
+      resolve: (root, { id }, context) => readUser(id, getProjection(context)),
     },
     // readUserByEmailOrUsername query example:
     // { readUserByEmailOrUsername(emailOrUsername: \"coco75\") { id, email, username, passwordHash }  }
@@ -89,11 +88,10 @@ const queryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         }
       },
-      resolve: (root, { emailOrUsername }) => readUserByEmailOrUsername(emailOrUsername),
+      resolve: (root, { emailOrUsername }, context) => readUserByEmailOrUsername(emailOrUsername, getProjection(context)),
     },
   }
 });
-
 
 /* ----------*/
 /* MUTATIONS */

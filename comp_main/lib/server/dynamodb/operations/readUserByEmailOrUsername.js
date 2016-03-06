@@ -2,7 +2,7 @@ import { dbClient, tables } from '../main';
 import deserialize from '../helpers/deserialize';
 import { log } from '../../../shared/utils/logger';
 
-export function readUserByEmailOrUsername(emailOrUsername) {
+export default function readUserByEmailOrUsername(emailOrUsername, ProjectionExpression) {
   
   log('readUserByEmailOrUsername', emailOrUsername);
   
@@ -43,11 +43,11 @@ export function readUserByEmailOrUsername(emailOrUsername) {
       if (!userId) return reject(new Error('NOT_FOUND: User not found'));
       
       const userParams = {
+        ProjectionExpression,
         TableName: tables.users.TableName,
         Key: {
           id: userId
         },
-        ProjectionExpression: 'id, email, username, passwordHash, isVerified',
       };
       
       dbClient.getItem(userParams, (err, data) => err ? reject(err) : resolve(deserialize(data.Item)));

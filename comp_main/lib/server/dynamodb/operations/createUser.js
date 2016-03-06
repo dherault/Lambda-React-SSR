@@ -1,10 +1,11 @@
 import uuid from 'uuid';
 
-import { hashPassword } from '../../auth/passwordUtils';
 import { dbClient, tables } from '../main';
+import { digestPassword } from '../../auth/passwordUtils';
 import { log } from '../../../shared/utils/logger';
+import deserialize from '../helpers/deserialize';
 
-export function createUser({ username, email, password }, sourceIp) {
+export default function createUser({ username, email, password }, sourceIp) {
   
   log('createUser', username);
   
@@ -19,7 +20,7 @@ export function createUser({ username, email, password }, sourceIp) {
     // http://stackoverflow.com/questions/24067283/dynamodb-checking-for-uniqueness-across-primary-key-and-another-field
     
     // Password hashing
-    hashPassword(password).then(passwordHash => {
+    digestPassword(password).then(passwordDigest => {
       
       const id = uuid.v1(); // This is no Twitter Snowflake, but will suffice for now
       const nowString = new Date().getTime().toString(10);
@@ -62,8 +63,8 @@ export function createUser({ username, email, password }, sourceIp) {
           email: {
             S: email
           },
-          passwordHash: {
-            S: passwordHash
+          passwordDigest: {
+            S: passwordDigest
           },
           emailVerificationToken: {
             S: emailVerificationToken
@@ -125,12 +126,7 @@ export function createUser({ username, email, password }, sourceIp) {
             return;
           }
           
-          resolveMain({
-            id,
-            email,
-            username,
-            isVerified: false,
-          });
+          resolveMain(deserialize(userParams.Item));
           
           // todo: send verification email with SES
           
@@ -162,7 +158,7 @@ export function createUser({ username, email, password }, sourceIp) {
   });
 }
 
-/* Deletes an entry in usersEmails if it exists */
+/* Deletes an entry in usersEmails */
 function deleteUserEmail(email) {
   
   log('deleting user email:', email);
@@ -179,7 +175,7 @@ function deleteUserEmail(email) {
   });
 }
 
-/* Deletes an entry in usersUsernames if it exists */
+/* Deletes an entry in usersUsernames */
 function deleteUserUsername(username) {
   
   log('deleting user username:', username);

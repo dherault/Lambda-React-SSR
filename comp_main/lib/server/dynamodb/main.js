@@ -113,6 +113,6 @@ const tables = config.getTables({
   stage: 'dev' // todo: replace with process.env when configured
 });
 
-console.log(process.env);
+// console.log(process.env);
 
 export { config, dbClient, tables };

@@ -14,7 +14,7 @@ export default function generateHTML(markup, serverState, is404) {
   
   const jsBundleLocation = onLambda ? 
     bundleLocation + 'bundle.js' : 
-    require('../../../../config/webpack.js').url + 'bundle.js';
+    require('../../../../dev_server/config.js').url + 'bundle.js';
   
   const cssBundleNode = onLambda ?
     `<link rel="stylesheet" href="${bundleLocation}bundle.css">` : 
