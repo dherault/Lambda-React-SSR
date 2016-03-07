@@ -6,8 +6,6 @@ This universal Nodejs app run on AWS Lambda and features:
 - [x] React server-side rendering (200, 404, 500)
 - [x] Graphql data fetching endpoint (200, 400, 404, 409, 500)
 - [ ] Authentication with AWS Cognito and SES
-- [ ] Onboarding with Menestrel
-- [ ] Random user profile pictures with Aquarelle
 
 ### Issue tracking:
 - How to send back HTML from endpoint: [#587](https://github.com/serverless/serverless/issues/587)

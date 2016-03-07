@@ -1,1 +1,1 @@
-For testing purposes only
+For manual testing purposes only

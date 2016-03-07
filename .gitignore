@@ -31,7 +31,7 @@ node_modules
 #SERVERLESS STUFF
 admin.env
 .env
-dynamo.env
+dynamodb.env
 
 # This project
 client/dist/
