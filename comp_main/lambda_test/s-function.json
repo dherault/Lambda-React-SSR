@@ -18,15 +18,7 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-        "application/json": {
-          "params": "$input.params()",
-          "alwaysTrue": "$offline.alwaysTrue",
-          "alwaysFalse": "$offline.alwaysFalse",
-          "alwaysZero": "$offline.alwaysZero",
-          "alwaysOne": "$offline.alwaysOne",
-          "alwaysUndefined": "$offline.alwaysUndefined",
-          "alwaysNull": "$offline.alwaysNull"
-        }
+        "application/json": "{\"id\":\"$input.params('id')\"}"
       },
       "responses": {
         "400": {

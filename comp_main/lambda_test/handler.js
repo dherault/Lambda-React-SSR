@@ -16,6 +16,6 @@ export function handler(event, context) {
   
   // const htmlSuccess = '<!DOCTYPE html><html><body>Success!</body></html>';
   // const htmlFailure = '<!DOCTYPE html><!-- 404 --><html><body>This is 404</body></html>';
-  console.log(event);
-  // context.succeed(event);
+  console.log('in handler:', event);
+  context.succeed(event);
 }
