@@ -7,7 +7,7 @@ import isPlainObject from 'lodash.isplainobject';
 import generateHTML from './generateHTML';
 import routes from '../../shared/routes';
 import configureStore from '../../shared/state/configureStore';
-import { logRendering, logError } from '../../shared/utils/logger';
+import { logRendering } from '../../shared/utils/logger';
 
 const log = logRendering;
 
@@ -46,7 +46,7 @@ export default function render(location, userId) {
           return reject(err);
         }
         
-        // Phidippides took charge of populating the state
+        // Some piece of code should take charge of populating the state
         const serverState = store.getState();
         
         // serverState trimming to save brandwith

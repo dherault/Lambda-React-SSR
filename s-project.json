@@ -2,7 +2,7 @@
   "name": "aquest",
   "version": "0.0.1",
   "profile": "serverless-v0.4.2",
-  "location": "https://github.com/dherault/Aquest.git",
+  "location": "https://github.com/dherault/Lambda-React-SSR.git",
   "author": "David Hérault",
   "description": "Aquest",
   "custom": {
@@ -28,7 +28,6 @@
   "plugins": [
     "serverless-optimizer-plugin",
     "serverless-offline",
-    "serverless-serve",
-    "serverless-client-s3"
+    "serverless-serve"
   ]
 }

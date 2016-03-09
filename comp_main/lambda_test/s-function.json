@@ -11,14 +11,50 @@
   },
   "endpoints": [
     {
-      "path": "lambda_test",
+      "path": "lambda_test/{id}",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-        "application/json": "{\"id\":\"$input.params('id')\"}"
+        "application/json": {
+          "notVelocity": "plainString",
+          "partVelocity": "plainString $input.params('id') otherString",
+          "fullVelocity": "$input.params('id')", 
+          "fullUnknownVelocity": "$thisVarDoesNotExist",
+          "partUnknownVelocity": "plainString $thisVarDoesNotExist otherString"
+        }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "lambda_test",
+      "method": "POST",
+      "type": "AWS",
+      "authorizationType": "none",
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+          "payload": "$input.json('$')",
+          "id_json": "$input.json('$.id')",
+          "id_path": "$input.path('$').id",
+          "true": true,
+          "false": false
+        }
       },
       "responses": {
         "400": {

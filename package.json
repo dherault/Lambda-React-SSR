@@ -2,7 +2,7 @@
   "name": "aquest",
   "version": "0.0.1",
   "description": "A Serverless Project and its Serverless Plugin dependencies.",
-  "author": "me",
+  "author": "David Hérault",
   "license": "GPL-3.0",
   "private": false,
   "repository": {
