@@ -7,6 +7,6 @@ This universal Nodejs app run on AWS Lambda and API Gateway, is built using the 
 - [x] Graphql data fetching endpoint for DynamoDB (with 200, 400, 404, 409, 500 status codes)
 - [ ] Authentication with AWS Cognito (see this repo: [LambdAuth](https://github.com/danilop/LambdAuth))
 
-### Licence
+### License
 
 GNU General Public License version 3 (GPL-3.0)
