@@ -11,5 +11,6 @@ export function handler(event, context) {
   
   // For dev purposes only
   console.log('in handler:', event);
-  context.succeed(event);
+  context.fail("400");
+  // context.succeed(event);
 }

@@ -30,6 +30,14 @@
         "400": {
           "statusCode": "400"
         },
+        ".*\"statusCode\":404.*": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": "#set($inputRoot = $input.path('$.errorMessage'))\n$inputRoot"
+          }
+        },
         "default": {
           "statusCode": "200",
           "responseParameters": {},
@@ -59,6 +67,14 @@
       "responses": {
         "400": {
           "statusCode": "400"
+        },
+        ".*\"statusCode\":404.*": {
+          "statusCode": "404",
+          "responseParameters": {},
+          "responseModels": {},
+          "responseTemplates": {
+            "application/json": "#set($inputRoot = $input.path('$.errorMessage'))\n$inputRoot"
+          }
         },
         "default": {
           "statusCode": "200",
